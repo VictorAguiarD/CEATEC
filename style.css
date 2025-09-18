@@ -1,0 +1,355 @@
+:root {
+    --bg: #f4f8fb;
+    --card: #fff;
+    --primary: #0f62fe;
+    --accent: #00bfa5;
+    --muted: #6b7280;
+    --success: #10b981;
+    --warning: #f59e0b;
+    --danger: #ef4444;
+    --radius: 10px;
+    font-family: Inter, Roboto, Arial, sans-serif;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    background: linear-gradient(180deg, #eef6ff 0%, var(--bg) 100%);
+    color: #0f1724;
+    padding: 18px;
+  }
+  
+  /* Cabeçalho */
+  header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+    flex-wrap: wrap;
+  }
+  
+  .brand {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), #4f46e5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+  }
+  
+  h1 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  p.sub {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  
+  /* Layout principal */
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .top-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  /* Dashboard */
+  .dashboard {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+  
+  .dash-card {
+    flex: 1;
+    min-width: 160px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 6px 20px rgba(2,6,23,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dash-left {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .dash-title {
+    font-size: 13px;
+    color: var(--muted);
+  }
+  
+  .dash-value {
+    font-size: 18px;
+    font-weight: 700;
+  }
+  
+  .dash-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+  }
+  
+  .card-blue { background: linear-gradient(90deg, #e8f0ff, #eef6ff); }
+  .card-green { background: linear-gradient(90deg, #ecfdf5, #e6fffa); }
+  .card-yellow { background: linear-gradient(90deg, #fffaf0, #fff7cd); }
+  .card-red { background: linear-gradient(90deg, #fff1f2, #fee2e2); }
+  
+  /* Componentes */
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 14px;
+    box-shadow: 0 6px 18px rgba(15,23,42,0.06);
+  }
+  
+  label {
+    display: block;
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  
+  input[type=text],
+  input[type=number],
+  input[type=date],
+  select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid #e6edf3;
+    background: #fbfdff;
+    font-size: 14px;
+  }
+  
+  .row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .row .col {
+    flex: 1;
+    min-width: 140px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 0;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+  
+  button:hover {
+    background: #0050d1;
+  }
+  
+  button.ghost {
+    background: transparent;
+    color: var(--primary);
+    border: 1px solid #e6edf3;
+  }
+  
+  button.red { background: var(--danger); }
+  button.yellow { background: var(--warning); }
+  
+  .muted { color: var(--muted); }
+  
+  /* Tabela */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  thead th {
+    text-align: left;
+    padding: 10px;
+    background: #f8fafc;
+    color: #0f1724;
+    font-size: 13px;
+    border-bottom: 1px solid #eef2f7;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  tbody td {
+    padding: 8px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 13px;
+    color: #111827;
+    vertical-align: middle;
+  }
+  
+  tbody tr:hover { background: #fbfdff; }
+  
+  .status-paid { background: linear-gradient(90deg, #ecfdf5, #d1fae5); }
+  .status-warning { background: linear-gradient(90deg, #fffaf0, #fff7cd); }
+  .status-overdue { background: linear-gradient(90deg, #fff1f2, #fee2e2); }
+  tr.selected { outline: 3px solid rgba(15,99,255,0.12); }
+  
+  /* Gráficos */
+  .charts-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  
+  .chart-card {
+    flex: 1;
+    min-width: 240px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 6px 12px rgba(2,6,23,0.04);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .chart-card canvas {
+    width: 100%;
+    height: 110px;
+  }
+  
+  .note {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+  }
+  
+  /* Utilitários */
+  .file-input { display: none; }
+  
+  .flex-row {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .small-btn {
+    padding: 6px 8px;
+    font-size: 13px;
+  }
+  
+  .muted-block {
+    background: #fbfdff;
+    border: 1px solid #eef2f7;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+  
+  /* Responsividade */
+  @media(min-width: 1200px) {
+    .layout {
+      grid-template-columns: 340px 1fr;
+    }
+  }
+  
+  @media(min-width: 980px) and (max-width: 1199px) {
+    .layout {
+      grid-template-columns: 300px 1fr;
+    }
+  }
+  
+  @media(max-width: 979px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+  
+    .dashboard {
+      flex-direction: column;
+    }
+  
+    .dash-card {
+      min-width: unset;
+    }
+  
+    header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+  
+  @media(max-width: 600px) {
+    body {
+      padding: 12px;
+    }
+  
+    h1 {
+      font-size: 16px;
+    }
+  
+    .dash-value {
+      font-size: 16px;
+    }
+  
+    table {
+      font-size: 12px;
+    }
+  
+    thead th, tbody td {
+      padding: 6px;
+    }
+  
+    button {
+      font-size: 13px;
+      padding: 6px 10px;
+    }
+  }
+  
