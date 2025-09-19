@@ -273,7 +273,10 @@ document.addEventListener('DOMContentLoaded', function() {
     function saveRecord() {
       const cliente = clienteEl.value.trim();
       const equipamento = equipamentoEl.value.trim();
-      const osNum = osEl.value.trim();
+      let osNum = osEl.value.trim();
+      if (!osNum.startsWith("OS")) {
+      osNum = "OS" + osNum;
+    }
       if (!cliente || !equipamento || !osNum) { alert('Preencha Cliente, Equipamento e NÚMERO DA OS (obrigatório).'); return; }
       const tipo = tipoEl.value;
       const dataSaida = dataSaidaEl.value || formatISO(new Date());
@@ -569,4 +572,5 @@ document.addEventListener('DOMContentLoaded', function() {
     // Iniciar a aplicação
     init();
 });
+
 
