@@ -349,7 +349,7 @@ document.addEventListener('DOMContentLoaded', function() {
       tableBody.innerHTML = '';
       const sourceData = dataToRender === undefined ? state.registros : dataToRender;
 
-      sourceData.forEach(r => {
+      sourceData.slice().reverse().forEach(r => {
         const tr = document.createElement('tr'); tr.dataset.id = r.id;
         const allPaid = r.PAGO_SINAL && (r.PARCELA_1 === 0 || r.PAGO_P1) && (r.PARCELA_2 === 0 || r.PAGO_P2);
         if (allPaid) tr.classList.add('status-paid');
@@ -408,14 +408,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function togglePago(id, tipo) {
-      const r = state.registros.find(x => x.id === id);
-      if (!r) return;
-      if (tipo === 'sinal') { r.PAGO_SINAL = !r.PAGO_SINAL; r.PAGO_SINAL_DATA = r.PAGO_SINAL ? formatISO(new Date()) : ''; }
-      if (tipo === 'p1') { r.PAGO_P1 = !r.PAGO_P1; r.PAGO_P1_DATA = r.PAGO_P1 ? formatISO(new Date()) : ''; }
-      if (tipo === 'p2') { r.PAGO_P2 = !r.PAGO_P2; r.PAGO_P2_DATA = r.PAGO_P2 ? formatISO(new Date()) : ''; }
-      r.DEVENDO = calcDevendo(r);
-      saveState(); applyFilters(); updateDashboard();
-    }
+  const r = state.registros.find(x => x.id === id);
+  if (!r) return;
+
+  if (tipo === 'sinal') {
+    r.PAGO_SINAL = !r.PAGO_SINAL;
+    r.PAGO_SINAL_DATA = r.PAGO_SINAL ? formatISO(new Date()) : '';
+    r.RESTANTE_SINAL = r.PAGO_SINAL ? 0 : r.SINAL;
+  }
+
+  if (tipo === 'p1') {
+    r.PAGO_P1 = !r.PAGO_P1;
+    r.PAGO_P1_DATA = r.PAGO_P1 ? formatISO(new Date()) : '';
+    r.RESTANTE_P1 = r.PAGO_P1 ? 0 : r.PARCELA_1;
+  }
+
+  if (tipo === 'p2') {
+    r.PAGO_P2 = !r.PAGO_P2;
+    r.PAGO_P2_DATA = r.PAGO_P2 ? formatISO(new Date()) : '';
+    r.RESTANTE_P2 = r.PAGO_P2 ? 0 : r.PARCELA_2;
+  }
+
+  r.DEVENDO = calcDevendo(r);
+  saveState();
+  applyFilters();
+  updateDashboard();
+}
+
 
     function loadSelectedToForm() {
       const sel = state.registros.find(r => r.id === selectedRowId);
